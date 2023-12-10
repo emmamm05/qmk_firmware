@@ -16,15 +16,15 @@
 
 #pragma once
 
-#define DRIVER_COUNT 1
-#define DRIVER_ADDR_1 0b1110100
+#define SNLED27351_DRIVER_COUNT 1
+#define SNLED27351_I2C_ADDRESS_1 0b1110100
 #define LED_MATRIX_LED_COUNT (99) // Here are twelve leds for side lights
 
 /* Use first 7 channels of LED driver */
 #define PHASE_CHANNEL MSKPHASE_7CHANNEL
 
 /* Set LED driver current */
-#define CKLED2001_CURRENT_TUNE \
+#define SNLED27351_CURRENT_TUNE \
     { 0x50, 0x50, 0x50, 0x50, 0x50, 0x50, 0x50, 0x50, 0x50, 0x50, 0x50, 0x50 }
 
 #define LED_DISABLE_WHEN_USB_SUSPENDED
