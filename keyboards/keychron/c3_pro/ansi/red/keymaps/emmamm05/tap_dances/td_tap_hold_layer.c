@@ -7,13 +7,16 @@ void td_tap_hold_layer_finished(tap_dance_state_t *state, void *user_data) {
     opts->state = td_tap_hold_layer_read_key_state(state, opts);
     switch (opts->state) {
         case TD_SINGLE_TAP:
-            tap_code(opts->tap_key);
+            if (opts->tap_key == CW_TOGG) caps_word_toggle();
+            else tap_code(opts->tap_key);
             break;
         case TD_DOUBLE_SINGLE_TAP:
             tap_code(opts->tap_key);
             tap_code(opts->tap_key);
+            break;
         case TD_DOUBLE_TAP:
-            tap_code(opts->double_tap_key);
+            if (opts->double_tap_key == CW_TOGG) caps_word_toggle();
+            else tap_code(opts->double_tap_key);
             break;
         case TD_SINGLE_HOLD:
             layer_on(opts->hold_layer);
