@@ -16,9 +16,10 @@
 #pragma once
 
 // Bootmagic Lite Press DEL while plugging the keyboard in
-#define BOOTMAGIC_LITE_ROW 3
+#define BOOTMAGIC_LITE_ROW 2
 #define BOOTMAGIC_LITE_COLUMN 14
 
 #define DYNAMIC_KEYMAP_LAYER_COUNT 12
 #define HOLD_ON_OTHER_KEY_PRESS
-
+#define TAPPING_TERM 175
+#define TAPPING_TERM_PER_KEY
