@@ -39,7 +39,7 @@ enum {
 
 tap_dance_action_t tap_dance_actions[] = {
     [TAB_NAV] = ACTION_TAP_DANCE_TAP_HOLD_LAYER(KC_TAB, LY_NAV),
-    [CAPS_MOD] = ACTION_TAP_DANCE_TAP_HOLD_LAYER(KC_CAPS, LY_MOD),
+    [CAPS_MOD] = ACTION_TAP_DANCE_DOUBLE_TAP_HOLD_LAYER(QK_CAPS_WORD_TOGGLE ,KC_CAPS, LY_MOD),
     [ENT_MOD] = ACTION_TAP_DANCE_TAP_HOLD_LAYER(KC_ENT, LY_MOD),
 };
 
@@ -70,7 +70,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______,            _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______,  _______,  _______,
         _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______,  _______,  _______,
         _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______,  _______,  _______,
-        _______,  KC_LCMD,  KC_LOPT,  KC_LSFT,  KC_LCTL,  _______,  _______,  KC_RCTL,  KC_ROPT,  KC_RSFT,  KC_RCMD,  _______,              _______,
+        _______,  KC_LCMD,  KC_LOPT,  KC_LSFT,  KC_LCTL,  _______,  _______,  KC_RCTL,  KC_RSFT,  KC_ROPT,  KC_RCMD,  _______,              _______,
         _______,            _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,              _______,            _______,
         _______,  _______,  _______,                                _______,                                _______,  _______,  _______,    _______,  _______,  _______,  _______),
     [LY_GAME] = LAYOUT_tkl_ansi(
