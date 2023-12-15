@@ -11,13 +11,6 @@ void td_tap_hold_layer_finished(tap_dance_state_t *state, void *user_data) {
         case TD_SINGLE_HOLD:
             layer_on(tap_hold_layer->hold_layer);
             break;
-        case TD_DOUBLE_TAP:
-            if (layer_state_is(tap_hold_layer->hold_layer)) {
-                layer_off(tap_hold_layer->hold_layer);
-            } else {
-                layer_on(tap_hold_layer->hold_layer);
-            }
-            break;
         default:
             break;
     }
