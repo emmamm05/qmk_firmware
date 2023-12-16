@@ -10,13 +10,22 @@ void td_tap_hold_layer_finished(tap_dance_state_t *state, void *user_data) {
             if (opts->tap_key == CW_TOGG) caps_word_toggle();
             else tap_code(opts->tap_key);
             break;
+        case TD_DOUBLE_TAP:
+            if (opts->double_tap_key == CW_TOGG) caps_word_toggle();
+            else tap_code(opts->double_tap_key);
+            break;
+        case TD_TRIPLE_TAP:
+            if (opts->double_tap_key == CW_TOGG) caps_word_toggle();
+            else tap_code(opts->triple_tap_key);
+            break;
         case TD_DOUBLE_SINGLE_TAP:
             tap_code(opts->tap_key);
             tap_code(opts->tap_key);
             break;
-        case TD_DOUBLE_TAP:
-            if (opts->double_tap_key == CW_TOGG) caps_word_toggle();
-            else tap_code(opts->double_tap_key);
+        case TD_TRIPLE_SINGLE_TAP:
+            tap_code(opts->tap_key);
+            tap_code(opts->tap_key);
+            tap_code(opts->tap_key);
             break;
         case TD_SINGLE_HOLD:
             layer_on(opts->hold_layer);
@@ -44,6 +53,9 @@ td_state_t td_tap_hold_layer_read_key_state(tap_dance_state_t *state, void *user
     } else if (state->count == 2){
         if (opts->double_tap_key == KC_NO) return TD_DOUBLE_SINGLE_TAP;
         else return TD_DOUBLE_TAP;
+    } else if (state->count == 3){
+        if (opts->triple_tap_key == KC_NO) return TD_TRIPLE_SINGLE_TAP;
+        else return TD_TRIPLE_TAP;
     }
     return TD_UNKNOWN;
 }
