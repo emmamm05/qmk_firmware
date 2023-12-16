@@ -1,10 +1,14 @@
 #include "td_tap_hold_layer.h"
 #include "common.h"
+#include <print.h>
 
 // Functions that control what our tap dance key does
 void td_tap_hold_layer_finished(tap_dance_state_t *state, void *user_data) {
     td_tap_hold_layer_opts_t *opts = (td_tap_hold_layer_opts_t *)user_data;
     opts->state = td_tap_hold_layer_read_key_state(state, opts);
+#ifdef CONSOLE_ENABLE
+    dprintf("TD state: %u \n", opts->state);
+#endif
     switch (opts->state) {
         case TD_SINGLE_TAP:
             if (opts->tap_key == CW_TOGG) caps_word_toggle();
@@ -15,7 +19,7 @@ void td_tap_hold_layer_finished(tap_dance_state_t *state, void *user_data) {
             else tap_code(opts->double_tap_key);
             break;
         case TD_TRIPLE_TAP:
-            if (opts->double_tap_key == CW_TOGG) caps_word_toggle();
+            if (opts->triple_tap_key == CW_TOGG) caps_word_toggle();
             else tap_code(opts->triple_tap_key);
             break;
         case TD_DOUBLE_SINGLE_TAP:
