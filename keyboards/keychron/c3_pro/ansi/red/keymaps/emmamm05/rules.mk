@@ -6,4 +6,5 @@ KEY_LOCK_ENABLE = yes
 CONSOLE_ENABLE = yes
 DYNAMIC_MACRO_ENABLE = yes
 LEADER_ENABLE = yes
+COMBO_ENABLE = yes
 SRC += $(wildcard $(KEYMAP_PATH)/**/*.c)
