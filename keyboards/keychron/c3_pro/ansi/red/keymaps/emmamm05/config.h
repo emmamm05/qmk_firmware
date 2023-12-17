@@ -24,3 +24,6 @@
 #define TAPPING_TERM 175
 #define TAPPING_TERM_PER_KEY
 #define IS_COMMAND() (get_mods() == MOD_MASK_CS)
+
+#define ONESHOT_TAP_TOGGLE 2
+#define ONESHOT_TAP_TIMEOUT 5000

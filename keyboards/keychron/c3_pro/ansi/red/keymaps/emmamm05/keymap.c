@@ -30,6 +30,13 @@ enum layers{
 #define DF_GAME DF(LY_GAME)
 #define KC_TASK G(KC_TAB)
 #define KC_FLXP G(KC_E)
+#define OS_CMD OSM(MOD_LGUI)
+#define OS_CTL OSM(MOD_LCTL)
+#define OS_OPT OSM(MOD_LALT)
+#define OS_SFT OSM(MOD_LSFT)
+#define OS_MEH OSM(MOD_MEH)
+#define OS_HYP OSM(MOD_HYPR)
+
 enum {
     TAB_NAV, // Our custom tap dance key; add any other tap dance keys to this enum
     CAPS_MOD,
@@ -69,7 +76,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______,            _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______,  _______,  _______,
         _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______,  _______,  _______,
         _______,  _______,  C(KC_W),  C(KC_A),  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______,  _______,  _______,
-        _______,  KC_LCMD,  KC_LOPT,  KC_LSFT,  KC_LCTL,  _______,  _______,  KC_RCTL,  KC_RSFT,  KC_ROPT,  KC_RCMD,  _______,              _______,
+        _______,  OS_CMD,   OS_OPT,   OS_SFT,   OS_CTL,   _______,  _______,  OS_CTL,   OS_SFT,   OS_OPT,   OS_CMD,   _______,              _______,
         _______,            _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,              _______,            _______,
         _______,  _______,  _______,                                _______,                                _______,  _______,  _______,    _______,  _______,  _______,  _______),
     [LY_GAME] = LAYOUT_tkl_ansi(
