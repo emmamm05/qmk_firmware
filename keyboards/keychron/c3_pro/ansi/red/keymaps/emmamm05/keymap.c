@@ -44,9 +44,9 @@ enum {
 };
 
 tap_dance_action_t tap_dance_actions[] = {
-    [TAB_NAV] = ACTION_TAP_DANCE_TAP_HOLD_LAYER(KC_TAB, LY_NAV),
+    [TAB_NAV]  = ACTION_TAP_DANCE_TAP_HOLD_LAYER(KC_TAB, LY_NAV),
     [CAPS_MOD] = ACTION_TAP_DANCE_TRIPLE_TAP_HOLD_LAYER(KC_ESC, CW_TOGG, KC_CAPS, LY_MOD),
-    [ENT_MOD] = ACTION_TAP_DANCE_TAP_HOLD_LAYER(KC_ENT, LY_MOD),
+    [ENT_MOD]  = ACTION_TAP_DANCE_TAP_HOLD_LAYER(KC_ENT, LY_MOD),
 };
 
 enum COMBOS {
@@ -54,17 +54,20 @@ enum COMBOS {
     CB_CTL_A,
     CB_CTL_W,
     CB_CTL_C,
+    CB_GUI,
 };
 
 const uint16_t PROGMEM cb_ctl[] = {KC_F, KC_J, COMBO_END};
 const uint16_t PROGMEM cb_ctl_a[] = {KC_A, KC_J, COMBO_END};
 const uint16_t PROGMEM cb_ctl_w[] = {KC_W, KC_J, COMBO_END};
 const uint16_t PROGMEM cb_ctl_c[] = {KC_C, KC_J, COMBO_END};
+const uint16_t PROGMEM cb_gui[] = {KC_D, KC_K, COMBO_END};
 combo_t key_combos[] = {
-    [CB_CTL] = COMBO(cb_ctl, OSM(MOD_LCTL)),
+    [CB_CTL]   = COMBO(cb_ctl, OSM(MOD_LCTL)),
     [CB_CTL_A] = COMBO(cb_ctl_a, LCTL(KC_A)),
     [CB_CTL_W] = COMBO(cb_ctl_w, LCTL(KC_W)),
     [CB_CTL_C] = COMBO(cb_ctl_c, LCTL(KC_C)),
+    [CB_GUI]   = COMBO(cb_gui, OSM(MOD_LGUI)),
 };
 
 // clang-format off
@@ -81,7 +84,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_OSSW,  DF_BASE,  DF_GAME,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______,  _______,  _______,
         BL_TOGG,  BL_STEP,  BL_UP,    _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______,  _______,  _______,
         _______,  _______,  BL_DOWN,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,              _______,
-        _______,            _______,  _______,  _______,  _______,  _______,  NK_TOGG,  CM_TOGG,  _______,  _______,  _______,              _______,            _______,
+        _______,            _______,  _______,  _______,  _______,  _______,  NK_TOGG,  CM_TOGG,  KC_F18,   KC_F17,   _______,              _______,            _______,
         _______,  _______,  _______,                                _______,                                _______,  KC_TRNS,  _______,    _______,  _______,  _______,  _______),
     [LY_NAV] = LAYOUT_tkl_ansi(
         _______,            _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______,  _______,  _______,
