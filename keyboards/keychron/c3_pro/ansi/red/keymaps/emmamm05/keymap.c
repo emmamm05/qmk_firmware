@@ -28,14 +28,14 @@ enum layers{
 
 #define DF_BASE DF(LY_BASE)
 #define DF_GAME DF(LY_GAME)
-#define KC_TASK G(KC_TAB)
-#define KC_FLXP G(KC_E)
+#define MOD_GAS MOD_LGUI | MOD_LALT | MOD_LSFT
 #define OS_CMD OSM(MOD_LGUI)
 #define OS_CTL OSM(MOD_LCTL)
 #define OS_OPT OSM(MOD_LALT)
 #define OS_SFT OSM(MOD_LSFT)
 #define OS_MEH OSM(MOD_MEH)
 #define OS_HYP OSM(MOD_HYPR)
+#define OS_GAS OSM(MOD_GAS)
 
 enum {
     TAB_NAV, // Our custom tap dance key; add any other tap dance keys to this enum
@@ -55,6 +55,7 @@ enum COMBOS {
     CB_CTL_W,
     CB_CTL_C,
     CB_GUI,
+    CB_GAS,
 };
 
 const uint16_t PROGMEM cb_ctl[] = {KC_F, KC_J, COMBO_END};
@@ -62,12 +63,14 @@ const uint16_t PROGMEM cb_ctl_a[] = {KC_A, KC_J, COMBO_END};
 const uint16_t PROGMEM cb_ctl_w[] = {KC_W, KC_J, COMBO_END};
 const uint16_t PROGMEM cb_ctl_c[] = {KC_C, KC_J, COMBO_END};
 const uint16_t PROGMEM cb_gui[] = {KC_D, KC_K, COMBO_END};
+const uint16_t PROGMEM cb_gas[] = {KC_G, KC_H, COMBO_END};
 combo_t key_combos[] = {
     [CB_CTL]   = COMBO(cb_ctl, OSM(MOD_LCTL)),
     [CB_CTL_A] = COMBO(cb_ctl_a, LCTL(KC_A)),
     [CB_CTL_W] = COMBO(cb_ctl_w, LCTL(KC_W)),
     [CB_CTL_C] = COMBO(cb_ctl_c, LCTL(KC_C)),
     [CB_GUI]   = COMBO(cb_gui, OSM(MOD_LGUI)),
+    [CB_GAS]   = COMBO(cb_gas, OSM(MOD_GAS)),
 };
 
 // clang-format off
@@ -108,7 +111,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_LSFT,            KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,     KC_N,     KC_M,     KC_COMM,  KC_DOT,   KC_SLSH,              KC_RSFT,            KC_UP,
         KC_LCTL,  KC_LWIN,  KC_LALT,                                KC_SPC,                                 KC_RALT,  MO(LY_GAME_FN),KC_APP,KC_RCTL,  KC_LEFT,  KC_DOWN,  KC_RGHT),
     [LY_GAME_FN] = LAYOUT_tkl_ansi(
-        _______,            KC_BRID,  KC_BRIU,  KC_TASK,  KC_FLXP,  BL_DOWN,  BL_UP,    KC_MPRV,  KC_MPLY,  KC_MNXT,  KC_MUTE,  KC_VOLD,    KC_VOLU,  _______,  _______,  BL_STEP,
+        _______,            KC_BRID,  KC_BRIU,  _______,  _______,  BL_DOWN,  BL_UP,    KC_MPRV,  KC_MPLY,  KC_MNXT,  KC_MUTE,  KC_VOLD,    KC_VOLU,  _______,  _______,  BL_STEP,
         KC_OSSW,  DF_BASE,  DF_GAME,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______,  _______,  _______,
         BL_TOGG,  BL_STEP,  BL_UP,    _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______,  _______,  _______,
         _______,  _______,  BL_DOWN,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,              _______,
