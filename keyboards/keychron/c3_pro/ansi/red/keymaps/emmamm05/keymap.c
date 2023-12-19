@@ -28,8 +28,10 @@ enum layers{
 
 #define DF_BASE DF(LY_BASE)
 #define DF_GAME DF(LY_GAME)
-#define MOD_ASTRAL MOD_LGUI | MOD_LALT | MOD_LSFT
-#define MOD_NEXUS MOD_LCTL | MOD_LGUI | MOD_LSFT
+// MOD_MEH = MOD_LCTL | MOD_LALT | MOD_LSFT
+// MOD_HYPR = MOD_LCTL | MOD_LALT | MOD_LGUI | MOD_LSFT
+#define MOD_ASTRAL  MOD_LGUI | MOD_LALT | MOD_LSFT
+#define MOD_NEXUS   MOD_LCTL | MOD_LGUI | MOD_LSFT
 #define MOD_TRINITY MOD_LCTL | MOD_LGUI | MOD_LALT
 #define OS_CMD OSM(MOD_LGUI)
 #define OS_CTL OSM(MOD_LCTL)
@@ -37,9 +39,9 @@ enum layers{
 #define OS_SFT OSM(MOD_LSFT)
 #define OS_MEH OSM(MOD_MEH)
 #define OS_HYP OSM(MOD_HYPR)
-#define OS_ASTRAL OSM(MOD_ASTRAL) // GUI + ALT + SHIFT
-// MOD_MEH = MOD_LCTL | MOD_LALT | MOD_LSFT
-// MOD_HYPR = MOD_LCTL | MOD_LALT | MOD_LGUI | MOD_LSFT
+#define OS_ASTRAL  OSM(MOD_ASTRAL)
+#define OS_NEXUS   OSM(MOD_NEXUS)
+#define OS_TRINITY OSM(MOD_TRINITY)
 
 enum {
     TAB_NAV, // Our custom tap dance key; add any other tap dance keys to this enum
@@ -55,74 +57,94 @@ tap_dance_action_t tap_dance_actions[] = {
 
 enum COMBOS {
     CB_CTL,
-    CB_CTL_A,
-    CB_CTL_W,
-    CB_CTL_C,
     CB_GUI,
-    CB_MEH,
-    CB_ASTRAL,
-    CB_NEXUS,
-    CB_TRINITY,
-    CB_HYPER,
-    CB_CS,
-    CB_CS2,
+    CB_ALT,
+    CB_SFT,
+    CB_LCS,
+    CB_LCA,
+    CB_LCG,
+    CB_LGS,
+    CB_LGA,
+    CB_LSA,
+    CB_LMEH,
+    CB_LNEXUS,
+    CB_LASTRAL,
+    CB_LTRINITY,
+    CB_LHYPER,
+    CB_RCA,
+    CB_RCS,
+    CB_RCG,
+    CB_RGS,
+    CB_RGA,
+    CB_RSA,
+    CB_RMEH,
+    CB_RNEXUS,
+    CB_RASTRAL,
+    CB_RTRINITY,
+    CB_RHYPER,
     CB_CA,
-    CB_CA2,
-    CB_CG,
-    CB_CG2,
-    CB_GS,
-    CB_GS2,
-    CB_GA,
-    CB_GA2,
-    CB_SA,
-    CB_SA2,
+    CB_CW,
+    CB_CC,
 };
 
-const uint16_t PROGMEM cb_ctl[]     = {KC_F, KC_J, COMBO_END};
-const uint16_t PROGMEM cb_ctl_a[]   = {KC_A, KC_J, COMBO_END};
-const uint16_t PROGMEM cb_ctl_w[]   = {KC_W, KC_J, COMBO_END};
-const uint16_t PROGMEM cb_ctl_c[]   = {KC_C, KC_J, COMBO_END};
-const uint16_t PROGMEM cb_gui[]     = {KC_D, KC_K, COMBO_END};
-const uint16_t PROGMEM cb_meh[]     = {KC_R, KC_U, COMBO_END};
-const uint16_t PROGMEM cb_astral[]  = {KC_G, KC_H, COMBO_END};
-const uint16_t PROGMEM cb_nexus[]   = {KC_T, KC_Y, COMBO_END};
-const uint16_t PROGMEM cb_trinity[] = {KC_C, KC_M, COMBO_END};
-const uint16_t PROGMEM cb_hyper[]   = {KC_V, KC_N, COMBO_END};
-const uint16_t PROGMEM cb_cs[]      = {KC_F, KC_S, COMBO_END};
-const uint16_t PROGMEM cb_cs2[]      = {KC_J, KC_L, COMBO_END};
-const uint16_t PROGMEM cb_ca[]      = {KC_F, KC_A, COMBO_END};
-const uint16_t PROGMEM cb_ca2[]      = {KC_J, KC_SCLN, COMBO_END};
-const uint16_t PROGMEM cb_cg[]      = {KC_F, KC_D, COMBO_END};
-const uint16_t PROGMEM cb_cg2[]      = {KC_J, KC_K, COMBO_END};
-const uint16_t PROGMEM cb_gs[]      = {KC_D, KC_S, COMBO_END};
-const uint16_t PROGMEM cb_gs2[]      = {KC_K, KC_L, COMBO_END};
-const uint16_t PROGMEM cb_ga[]      = {KC_D, KC_A, COMBO_END};
-const uint16_t PROGMEM cb_ga2[]      = {KC_K, KC_SCLN, COMBO_END};
-const uint16_t PROGMEM cb_sa[]      = {KC_S, KC_A, COMBO_END};
-const uint16_t PROGMEM cb_sa2[]      = {KC_L, KC_SCLN, COMBO_END};
+const uint16_t PROGMEM cb_ctl[]           = {KC_F, KC_J, COMBO_END};
+const uint16_t PROGMEM cb_gui[]           = {KC_D, KC_K, COMBO_END};
+const uint16_t PROGMEM cb_sft[]           = {KC_S, KC_L, COMBO_END};
+const uint16_t PROGMEM cb_opt[]           = {KC_A, KC_SCLN, COMBO_END};
+const uint16_t PROGMEM cb_left_cs[]       = {KC_F, KC_S, COMBO_END};
+const uint16_t PROGMEM cb_left_ca[]       = {KC_F, KC_A, COMBO_END};
+const uint16_t PROGMEM cb_left_cg[]       = {KC_F, KC_D, COMBO_END};
+const uint16_t PROGMEM cb_left_gs[]       = {KC_D, KC_S, COMBO_END};
+const uint16_t PROGMEM cb_left_ga[]       = {KC_D, KC_A, COMBO_END};
+const uint16_t PROGMEM cb_left_sa[]       = {KC_S, KC_A, COMBO_END};
+const uint16_t PROGMEM cb_left_meh[]      = {KC_F, KC_S, KC_A, COMBO_END};
+const uint16_t PROGMEM cb_left_astral[]   = {KC_D, KC_S, KC_A, COMBO_END};
+const uint16_t PROGMEM cb_left_nexus[]    = {KC_F, KC_D, KC_S, COMBO_END};
+const uint16_t PROGMEM cb_left_trinity[]  = {KC_F, KC_D, KC_A, COMBO_END};
+const uint16_t PROGMEM cb_left_hyper[]    = {KC_F, KC_D, KC_S, KC_A, COMBO_END};
+const uint16_t PROGMEM cb_right_ca[]      = {KC_J, KC_SCLN, COMBO_END};
+const uint16_t PROGMEM cb_right_cs[]      = {KC_J, KC_L, COMBO_END};
+const uint16_t PROGMEM cb_right_cg[]      = {KC_J, KC_K, COMBO_END};
+const uint16_t PROGMEM cb_right_gs[]      = {KC_K, KC_L, COMBO_END};
+const uint16_t PROGMEM cb_right_ga[]      = {KC_K, KC_SCLN, COMBO_END};
+const uint16_t PROGMEM cb_right_sa[]      = {KC_L, KC_SCLN, COMBO_END};
+const uint16_t PROGMEM cb_right_meh[]     = {KC_J, KC_L, KC_SCLN, COMBO_END};
+const uint16_t PROGMEM cb_right_astral[]  = {KC_K, KC_L, KC_SCLN, COMBO_END};
+const uint16_t PROGMEM cb_right_nexus[]   = {KC_J, KC_K, KC_L, COMBO_END};
+const uint16_t PROGMEM cb_right_trinity[] = {KC_J, KC_K, KC_SCLN, COMBO_END};
+const uint16_t PROGMEM cb_right_hyper[]   = {KC_J, KC_K, KC_L, KC_SCLN, COMBO_END};
+const uint16_t PROGMEM cb_ca[]   = {KC_J, KC_A, COMBO_END};
+const uint16_t PROGMEM cb_cw[]   = {KC_J, KC_W, COMBO_END};
+const uint16_t PROGMEM cb_cc[]   = {KC_J, KC_C, COMBO_END};
 combo_t key_combos[] = {
-    [CB_CTL]     = COMBO(cb_ctl, OSM(MOD_LCTL)),
-    [CB_CTL_A]   = COMBO(cb_ctl_a, LCTL(KC_A)),
-    [CB_CTL_W]   = COMBO(cb_ctl_w, LCTL(KC_W)),
-    [CB_CTL_C]   = COMBO(cb_ctl_c, LCTL(KC_C)),
-    [CB_GUI]     = COMBO(cb_gui, OSM(MOD_LGUI)),
-    [CB_ASTRAL]  = COMBO(cb_astral, OSM(MOD_ASTRAL)),
-    [CB_MEH]     = COMBO(cb_meh, OSM(MOD_MEH)),
-    [CB_NEXUS]   = COMBO(cb_nexus, OSM(MOD_NEXUS)),
-    [CB_TRINITY] = COMBO(cb_trinity, OSM(MOD_TRINITY)),
-    [CB_HYPER]   = COMBO(cb_hyper, OSM(MOD_HYPR)),
-    [CB_CS]      = COMBO(cb_cs, OSM(MOD_LCTL | MOD_LSFT)),
-    [CB_CS2]     = COMBO(cb_cs2, OSM(MOD_LCTL | MOD_LSFT)),
-    [CB_CA]      = COMBO(cb_ca, OSM(MOD_LCTL | MOD_LALT)),
-    [CB_CA2]     = COMBO(cb_ca2, OSM(MOD_LCTL | MOD_LALT)),
-    [CB_CG]      = COMBO(cb_cg, OSM(MOD_LCTL | MOD_LGUI)),
-    [CB_CG2]     = COMBO(cb_cg2, OSM(MOD_LCTL | MOD_LGUI)),
-    [CB_GS]      = COMBO(cb_gs, OSM(MOD_LGUI | MOD_LSFT)),
-    [CB_GS2]     = COMBO(cb_gs2, OSM(MOD_LGUI | MOD_LSFT)),
-    [CB_GA]      = COMBO(cb_ga, OSM(MOD_LGUI | MOD_LALT)),
-    [CB_GA2]     = COMBO(cb_ga2, OSM(MOD_LGUI | MOD_LALT)),
-    [CB_SA]      = COMBO(cb_sa, OSM(MOD_LSFT | MOD_LALT)),
-    [CB_SA2]     = COMBO(cb_sa2, OSM(MOD_LSFT | MOD_LALT)),
+    [CB_CTL] = COMBO(cb_ctl, OSM(MOD_LCTL)),
+    [CB_GUI] = COMBO(cb_gui, OSM(MOD_LGUI)),
+    [CB_SFT] = COMBO(cb_sft, OSM(MOD_LSFT)),
+    [CB_ALT] = COMBO(cb_opt, OSM(MOD_LALT)),
+    [CB_LCS] = COMBO(cb_left_cs, OSM(MOD_LCTL | MOD_LSFT)),
+    [CB_LCA] = COMBO(cb_left_ca, OSM(MOD_LCTL | MOD_LALT)),
+    [CB_LCG] = COMBO(cb_left_cg, OSM(MOD_LCTL | MOD_LGUI)),
+    [CB_LGS] = COMBO(cb_left_gs, OSM(MOD_LGUI | MOD_LSFT)),
+    [CB_LGA] = COMBO(cb_left_ga, OSM(MOD_LGUI | MOD_LALT)),
+    [CB_LSA] = COMBO(cb_left_sa, OSM(MOD_LSFT | MOD_LALT)),
+    [CB_LMEH] = COMBO(cb_left_meh, OSM(MOD_MEH)),
+    [CB_LNEXUS] = COMBO(cb_left_nexus, OSM(MOD_NEXUS)),
+    [CB_LASTRAL] = COMBO(cb_left_astral, OSM(MOD_ASTRAL)),
+    [CB_LTRINITY] = COMBO(cb_left_trinity, OSM(MOD_TRINITY)),
+    [CB_LHYPER] = COMBO(cb_left_hyper, OSM(MOD_HYPR)),
+    [CB_RCS] = COMBO(cb_right_cs, OSM(MOD_LCTL | MOD_LSFT)),
+    [CB_RCA] = COMBO(cb_right_ca, OSM(MOD_LCTL | MOD_LALT)),
+    [CB_RCG] = COMBO(cb_right_cg, OSM(MOD_LCTL | MOD_LGUI)),
+    [CB_RGS] = COMBO(cb_right_gs, OSM(MOD_LGUI | MOD_LSFT)),
+    [CB_RGA] = COMBO(cb_right_ga, OSM(MOD_LGUI | MOD_LALT)),
+    [CB_RSA] = COMBO(cb_right_sa, OSM(MOD_LSFT | MOD_LALT)),
+    [CB_RMEH] = COMBO(cb_right_meh, OSM(MOD_MEH)),
+    [CB_RNEXUS] = COMBO(cb_right_nexus, OSM(MOD_NEXUS)),
+    [CB_RASTRAL] = COMBO(cb_right_astral, OSM(MOD_ASTRAL)),
+    [CB_RTRINITY] = COMBO(cb_right_trinity, OSM(MOD_TRINITY)),
+    [CB_CA] = COMBO(cb_ca, C(KC_A)),
+    [CB_CW] = COMBO(cb_cw, C(KC_W)),
+    [CB_CC] = COMBO(cb_cc, C(KC_C)),
 };
 
 // clang-format off

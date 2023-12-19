@@ -21,6 +21,7 @@
 
 #define DYNAMIC_KEYMAP_LAYER_COUNT 12
 #define HOLD_ON_OTHER_KEY_PRESS
+#define COMBO_TERM 40
 #define TAPPING_TERM 175
 #define TAPPING_TERM_PER_KEY
 #define IS_COMMAND() (get_mods() == MOD_MASK_CS)
