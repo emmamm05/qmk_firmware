@@ -23,6 +23,7 @@ enum layers{
   LY_GAME,
   LY_GAME_FN,
   LY_NAV,
+  LY_MOUSE,
   LY_NUM,
   LY_MOD,
 };
@@ -53,7 +54,6 @@ enum {
 
 tap_dance_action_t tap_dance_actions[] = {
     [TAB_NAV]  = ACTION_TAP_DANCE_TAP_HOLD_LAYER(KC_TAB, LY_NAV),
-    [BSLS_NAV]  = ACTION_TAP_DANCE_TAP_HOLD_LAYER(KC_BSLS, LY_NAV),
     [CAPS_MOD] = ACTION_TAP_DANCE_TRIPLE_TAP_HOLD_LAYER(KC_ESC, CW_TOGG, KC_CAPS, LY_MOD),
     [ENT_MOD]  = ACTION_TAP_DANCE_TAP_HOLD_LAYER(KC_ENT, LY_MOD),
 };
@@ -150,7 +150,7 @@ combo_t key_combos[] = {
     [CB_CA] = COMBO(cb_ca, C(KC_A)),
     [CB_CW] = COMBO(cb_cw, C(KC_W)),
     [CB_CC] = COMBO(cb_cc, C(KC_C)),
-    [CB_MOUSE] = COMBO(cb_mouse, OSL(LY_NAV)),
+    [CB_MOUSE] = COMBO(cb_mouse, OSL(LY_MOUSE)),
 };
 
 // clang-format off
@@ -158,7 +158,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [LY_BASE] = LAYOUT_tkl_ansi(
         KC_ESC,             KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_F11,     KC_F12,   KC_PSCR,  QK_LOCK,  QK_REP,
         KC_GRV,      KC_1,  KC_2,     KC_3,     KC_4,     KC_5,     KC_6,     KC_7,     KC_8,     KC_9,     KC_0,     KC_MINS,  KC_EQL,     KC_BSPC,  KC_INS,   KC_HOME,  KC_PGUP,
-        TD(TAB_NAV), KC_Q,  KC_W,     KC_E,     KC_R,     KC_T,     KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,     KC_LBRC,  KC_RBRC, TD(BSLS_NAV),KC_DEL,   KC_END,   KC_PGDN,
+        TD(TAB_NAV), KC_Q,  KC_W,     KC_E,     KC_R,     KC_T,     KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,     KC_LBRC,  KC_RBRC,    KC_BSLS,  KC_DEL,   KC_END,   KC_PGDN,
         TD(CAPS_MOD),KC_A,  KC_S,     KC_D,     KC_F,     KC_G,     KC_H,     KC_J,     KC_K,     KC_L,     KC_SCLN,  KC_QUOT,              KC_ENT,
         KC_LSFT,            KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,     KC_N,     KC_M,     KC_COMM,  KC_DOT,   KC_SLSH,              KC_RSFT,            KC_UP,
         KC_LCTL,  KC_LOPT,  KC_LCMD,                                KC_SPC,                                 KC_RCMD,  MO(LY_FN),KC_ROPT,    KC_RCTL,  KC_LEFT,  KC_DOWN,  KC_RGHT),
@@ -171,10 +171,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______,  _______,  _______,                                _______,                                _______,  KC_TRNS,  _______,    _______,  _______,  _______,  _______),
     [LY_NAV] = LAYOUT_tkl_ansi(
         _______,            _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______,  _______,  _______,
-        KC_ACL0,  KC_ACL1,  KC_ACL2,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______,  _______,  _______,
-        _______,  _______,  KC_MS_U,  _______,  KC_WH_U,  _______,  KC_HOME,KC_PAGE_DOWN,KC_PAGE_UP,KC_END, _______,  _______,  _______,    _______,  _______,  _______,  _______,
-        KC_BTN2,  KC_MS_L,  KC_MS_D,  KC_MS_R,  KC_WH_D,  _______,  KC_LEFT,  KC_DOWN,  KC_UP,    KC_RIGHT, _______,  _______,              _______,
+        _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______,  _______,  _______,
+        _______,  _______,  _______,  _______,  _______,  _______,  KC_HOME,KC_PAGE_DOWN,KC_PAGE_UP,KC_END, _______,  _______,  _______,    _______,  _______,  _______,  _______,
+        _______,  _______,  _______,  _______,  _______,  _______,  KC_LEFT,  KC_DOWN,  KC_UP,    KC_RIGHT, _______,  _______,              _______,
         _______,            _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,              _______,            _______,
+        _______,  _______,  _______,                                KC_BTN1,                                _______,  _______,  _______,    _______,  _______,  _______,  _______),
+    [LY_MOUSE] = LAYOUT_tkl_ansi(
+        _______,            _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______,  _______,  _______,
+        KC_ACL0,  KC_ACL1,  KC_ACL2,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______,  _______,  _______,
+        _______,  _______,  KC_MS_U,  _______,  KC_WH_U,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______,  _______,  _______,
+        KC_BTN2,  KC_MS_L,  KC_MS_D,  KC_MS_R,  KC_WH_D,  _______,  _______,  KC_ACL1,  _______,  _______,  _______,  _______,              _______,
+        _______,            _______,  _______,  _______,  _______,  _______,  KC_ACL0,  KC_ACL2,  _______,  _______,  _______,              _______,            _______,
         _______,  _______,  _______,                                KC_BTN1,                                _______,  _______,  _______,    _______,  _______,  _______,  _______),
     [LY_NUM] = LAYOUT_tkl_ansi(
         _______,            _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______,  _______,  _______,

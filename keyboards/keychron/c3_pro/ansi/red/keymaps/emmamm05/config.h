@@ -28,3 +28,8 @@
 
 #define ONESHOT_TAP_TOGGLE 2
 #define ONESHOT_TAP_TIMEOUT 5000
+
+#define MK_3_SPEED
+#define MK_MOMENTARY_ACCEL
+#define MK_COMBINED
+
