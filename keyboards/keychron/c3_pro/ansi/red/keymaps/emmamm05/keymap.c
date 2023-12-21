@@ -88,6 +88,7 @@ enum COMBOS {
     CB_CA,
     CB_CW,
     CB_CC,
+    CB_MOUSE,
 };
 
 const uint16_t PROGMEM cb_ctl[]           = {KC_F, KC_J, COMBO_END};
@@ -119,6 +120,7 @@ const uint16_t PROGMEM cb_right_hyper[]   = {KC_J, KC_K, KC_L, KC_SCLN, COMBO_EN
 const uint16_t PROGMEM cb_ca[]   = {KC_J, KC_A, COMBO_END};
 const uint16_t PROGMEM cb_cw[]   = {KC_J, KC_W, COMBO_END};
 const uint16_t PROGMEM cb_cc[]   = {KC_J, KC_C, COMBO_END};
+const uint16_t PROGMEM cb_mouse[] = {KC_I, KC_O, COMBO_END};
 combo_t key_combos[] = {
     [CB_CTL] = COMBO(cb_ctl, OSM(MOD_LCTL)),
     [CB_GUI] = COMBO(cb_gui, OSM(MOD_LGUI)),
@@ -148,6 +150,7 @@ combo_t key_combos[] = {
     [CB_CA] = COMBO(cb_ca, C(KC_A)),
     [CB_CW] = COMBO(cb_cw, C(KC_W)),
     [CB_CC] = COMBO(cb_cc, C(KC_C)),
+    [CB_MOUSE] = COMBO(cb_mouse, OSL(LY_NAV)),
 };
 
 // clang-format off
