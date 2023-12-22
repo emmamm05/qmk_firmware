@@ -31,5 +31,6 @@
 
 #define MK_3_SPEED
 #define MK_MOMENTARY_ACCEL
-#define MK_COMBINED
-
+#define MK_W_INTERVAL_UNMOD 70
+#define MC_C_OFFSET_UNMOD 24
+#define MC_C_OFFSET_1 8
