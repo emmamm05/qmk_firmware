@@ -1,6 +1,11 @@
-#include "td_tap_hold_layer.h"
-#include "common.h"
+#include "tap_dances.h"
 #include <print.h>
+
+tap_dance_action_t tap_dance_actions[] = {
+    [TAB_NAV]  = ACTION_TAP_DANCE_TAP_HOLD_LAYER(KC_TAB, LY_NAV),
+    [CAPS_MOD] = ACTION_TAP_DANCE_TRIPLE_TAP_HOLD_LAYER(KC_ESC, CW_TOGG, KC_CAPS, LY_MOD),
+    [ENT_MOD]  = ACTION_TAP_DANCE_TAP_HOLD_LAYER(KC_ENT, LY_MOD),
+};
 
 // Functions that control what our tap dance key does
 void td_tap_hold_layer_finished(tap_dance_state_t *state, void *user_data) {
