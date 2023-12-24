@@ -8,4 +8,6 @@ DYNAMIC_MACRO_ENABLE = yes
 LEADER_ENABLE = yes
 COMBO_ENABLE = yes
 REPEAT_KEY_ENABLE = yes
+LED_MATRIX_ENABLE = yes
+WPM_ENABLE = yes
 SRC += $(wildcard $(KEYMAP_PATH)/**/*.c)

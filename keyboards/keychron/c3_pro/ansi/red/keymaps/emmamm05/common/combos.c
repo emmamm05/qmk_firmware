@@ -64,14 +64,15 @@ combo_t key_combos[] = {
 };
 
 bool combo_should_trigger(uint16_t combo_index, combo_t *combo, uint16_t keycode, keyrecord_t *record) {
-    if (layer_state_is(LY_GAME)) {
+    uint8_t wpm = get_current_wpm();
+    if (wpm > 50) {
 #ifdef CONSOLE_ENABLE
-        dprintf("combo_should_trigger: false, %u, %u\n", combo_index, keycode);
+    dprintf("wpm: %u, combos disabled\n", wpm);
 #endif
         return false;
     }
 #ifdef CONSOLE_ENABLE
-    dprintf("combo_should_trigger: true, %u, %u\n", combo_index, keycode);
+    dprintf("wpm: %u, combos enabled\n", wpm);
 #endif
     return true;
 }

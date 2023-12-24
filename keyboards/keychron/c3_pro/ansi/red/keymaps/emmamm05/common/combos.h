@@ -38,5 +38,3 @@ enum COMBOS {
 };
 #define KEY_COMBOS_SIZE 30
 extern combo_t key_combos[KEY_COMBOS_SIZE];
-
-bool combo_should_trigger(uint16_t combo_index, combo_t *combo, uint16_t keycode, keyrecord_t *record);

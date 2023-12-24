@@ -11,6 +11,7 @@
         "animations": {
             "none": true,
             "solid": true,
+            "alphas_mods": true,
             "breathing": true,
             "band_pinwheel": true,
             "band_spiral": true,
@@ -20,6 +21,7 @@
             "dual_beacon": true,
             "solid_reactive_simple": true,
             "solid_reactive_multiwide": true,
+            "solid_reactive_multicross": true,
             "solid_reactive_multinexus": true,
             "solid_splash": true,
             "wave_left_right": true,
