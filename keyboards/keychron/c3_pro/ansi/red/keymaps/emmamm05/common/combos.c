@@ -65,7 +65,7 @@ combo_t key_combos[] = {
 
 bool combo_should_trigger(uint16_t combo_index, combo_t *combo, uint16_t keycode, keyrecord_t *record) {
     uint8_t wpm = get_current_wpm();
-    if (wpm > 50) {
+    if (wpm > COMBOS_WPM_THRESHOLD) {
 #ifdef CONSOLE_ENABLE
     dprintf("wpm: %u, combos disabled\n", wpm);
 #endif
