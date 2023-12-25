@@ -31,6 +31,7 @@ const uint16_t PROGMEM cb_cw[]            = {KC_J, KC_W, COMBO_END};
 const uint16_t PROGMEM cb_cc[]            = {KC_J, KC_C, COMBO_END};
 const uint16_t PROGMEM cb_mouse[]         = {KC_I, KC_O, COMBO_END};
 const uint16_t PROGMEM cb_nav[]           = {KC_W, KC_E, COMBO_END};
+const uint16_t PROGMEM cb_sym[]           = {KC_G, KC_H, COMBO_END};
 
 combo_t key_combos[] = {
     [CB_CTL] = COMBO(cb_ctl, OSM(MOD_LCTL)),
@@ -63,6 +64,7 @@ combo_t key_combos[] = {
     [CB_CC] = COMBO(cb_cc, C(KC_C)),
     [CB_MOUSE] = COMBO(cb_mouse, OSL(LY_MOUSE)),
     [CB_NAV] = COMBO(cb_nav, OSL(LY_NAV)),
+    [CB_SYM] = COMBO(cb_sym, OSL(LY_SYM)),
 };
 
 bool combo_should_trigger(uint16_t combo_index, combo_t *combo, uint16_t keycode, keyrecord_t *record) {

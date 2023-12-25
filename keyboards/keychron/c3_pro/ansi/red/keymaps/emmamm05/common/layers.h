@@ -11,6 +11,7 @@ enum layers{
   LY_MOUSE,
   LY_NUM,
   LY_MOD,
+  LY_SYM,
 };
 
 layer_state_t default_layer_state_set_user(layer_state_t state);
