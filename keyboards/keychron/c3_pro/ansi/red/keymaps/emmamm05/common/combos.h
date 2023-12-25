@@ -35,6 +35,7 @@ enum COMBOS {
     CB_CW,
     CB_CC,
     CB_MOUSE,
+    CB_NAV,
 };
-#define KEY_COMBOS_SIZE 30
+#define KEY_COMBOS_SIZE 31
 extern combo_t key_combos[KEY_COMBOS_SIZE];
