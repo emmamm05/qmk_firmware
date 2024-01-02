@@ -12,7 +12,7 @@ void td_tap_hold_layer_finished(tap_dance_state_t *state, void *user_data) {
     td_tap_hold_layer_opts_t *opts = (td_tap_hold_layer_opts_t *)user_data;
     opts->state = td_tap_hold_layer_read_key_state(state, opts);
 #ifdef CONSOLE_ENABLE
-    dprintf("TD state: %u \n", opts->state);
+    dprintf("TD state: %u\n", opts->state);
 #endif
     switch (opts->state) {
         case TD_SINGLE_TAP:
