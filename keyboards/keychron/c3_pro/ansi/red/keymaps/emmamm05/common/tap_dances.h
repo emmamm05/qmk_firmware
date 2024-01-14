@@ -26,6 +26,24 @@ enum {
     ENT_MOD,
 };
 
+// SHIFT TAP DANCE
+
+typedef struct {
+    uint16_t tap_key; // either KC_LSFT or KC_RSFT
+    uint16_t mod_key; // either MOD_LSFT or MOD_RSFT
+    td_state_t state;
+} td_kc_sft_opts_t;
+
+void td_kc_sft_finished(tap_dance_state_t *state, void *user_data);
+void td_kc_sft_reset(tap_dance_state_t *state, void *user_data);
+void td_kc_sft_read_key_state(tap_dance_state_t *state, void *user_data);
+
+#define ACTION_TAP_DANCE_KC_SFT(tap_key, mod_key) \
+    { .fn = { NULL, td_kc_sft_finished, td_kc_sft_reset}, \
+      .user_data = (void *)&((td_kc_sft_opts){tap_key, mod_key})}
+
+// HOLD LAYER TAP DANCE
+
 typedef struct {
     uint16_t tap_key;
     uint16_t double_tap_key;
