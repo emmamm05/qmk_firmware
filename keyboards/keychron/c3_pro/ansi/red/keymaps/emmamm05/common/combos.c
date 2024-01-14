@@ -1,4 +1,5 @@
 #include "combos.h"
+#include "keys.h"
 
 const uint16_t PROGMEM cb_ctl[]           = {KC_F, KC_J, COMBO_END};
 const uint16_t PROGMEM cb_gui[]           = {KC_D, KC_K, COMBO_END};
@@ -44,10 +45,10 @@ combo_t key_combos[] = {
     [CB_LGS] = COMBO(cb_left_gs, OSM(MOD_LGUI | MOD_LSFT)),
     [CB_LGA] = COMBO(cb_left_ga, OSM(MOD_LGUI | MOD_LALT)),
     [CB_LSA] = COMBO(cb_left_sa, OSM(MOD_LSFT | MOD_LALT)),
-    [CB_LMEH] = COMBO(cb_left_meh, OSM(MOD_MEH)),
-    [CB_LNEXUS] = COMBO(cb_left_nexus, OSM(MOD_NEXUS)),
-    [CB_LASTRAL] = COMBO(cb_left_astral, OSM(MOD_ASTRAL)),
-    [CB_LTRINITY] = COMBO(cb_left_trinity, OSM(MOD_TRINITY)),
+    [CB_LMEH] = COMBO(cb_left_meh, OS_MEH),
+    [CB_LNEXUS] = COMBO(cb_left_nexus, OS_NEXUS),
+    [CB_LASTRAL] = COMBO(cb_left_astral, OS_ASTRAL),
+    [CB_LTRINITY] = COMBO(cb_left_trinity, OS_TRINITY),
     [CB_LHYPER] = COMBO(cb_left_hyper, OSM(MOD_HYPR)),
     [CB_RCS] = COMBO(cb_right_cs, OSM(MOD_LCTL | MOD_LSFT)),
     [CB_RCA] = COMBO(cb_right_ca, OSM(MOD_LCTL | MOD_LALT)),
@@ -55,10 +56,10 @@ combo_t key_combos[] = {
     [CB_RGS] = COMBO(cb_right_gs, OSM(MOD_LGUI | MOD_LSFT)),
     [CB_RGA] = COMBO(cb_right_ga, OSM(MOD_LGUI | MOD_LALT)),
     [CB_RSA] = COMBO(cb_right_sa, OSM(MOD_LSFT | MOD_LALT)),
-    [CB_RMEH] = COMBO(cb_right_meh, OSM(MOD_MEH)),
-    [CB_RNEXUS] = COMBO(cb_right_nexus, OSM(MOD_NEXUS)),
-    [CB_RASTRAL] = COMBO(cb_right_astral, OSM(MOD_ASTRAL)),
-    [CB_RTRINITY] = COMBO(cb_right_trinity, OSM(MOD_TRINITY)),
+    [CB_RMEH] = COMBO(cb_right_meh, OS_MEH),
+    [CB_RNEXUS] = COMBO(cb_right_nexus, OS_NEXUS),
+    [CB_RASTRAL] = COMBO(cb_right_astral, OS_ASTRAL),
+    [CB_RTRINITY] = COMBO(cb_right_trinity, OS_TRINITY),
     [CB_CA] = COMBO(cb_ca, C(KC_A)),
     [CB_CW] = COMBO(cb_cw, C(KC_W)),
     [CB_CC] = COMBO(cb_cc, C(KC_C)),
