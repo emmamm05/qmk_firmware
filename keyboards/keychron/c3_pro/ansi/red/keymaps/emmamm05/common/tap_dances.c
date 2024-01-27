@@ -4,17 +4,7 @@
 tap_dance_action_t tap_dance_actions[] = {
     [TAB_NAV]  = ACTION_TAP_DANCE_TAP_HOLD_LAYER(KC_TAB, LY_NAV),
     [ENT_MOD]  = ACTION_TAP_DANCE_TAP_HOLD_LAYER(KC_ENT, LY_MOD),
-    [CAPS_MOD] = ACTION_TAP_DANCE_FN(td_caps)
 };
-
-// CAPS LAYER TAP DANCE
-void td_caps (tap_dance_state_t *state, void *user_data) {
-  if (state->count == 1) {
-    set_oneshot_layer(LY_MOD, ONESHOT_START);
-    clear_oneshot_layer_state(ONESHOT_PRESSED);
-    reset_tap_dance(state);
-  }
-}
 
 // HOLD LAYER TAP DANCE
 void td_tap_hold_layer_finished(tap_dance_state_t *state, void *user_data) {

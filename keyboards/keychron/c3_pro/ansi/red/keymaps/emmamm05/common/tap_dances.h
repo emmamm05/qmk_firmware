@@ -22,12 +22,8 @@ typedef enum {
 // tap dance keys
 enum {
     TAB_NAV,
-    CAPS_MOD,
     ENT_MOD,
 };
-
-// CAPS LAYER TAP DANCE
-void td_caps(tap_dance_state_t *state, void *user_data);
 
 // HOLD LAYER TAP DANCE
 typedef struct {

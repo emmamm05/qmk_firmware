@@ -31,12 +31,13 @@ enum COMBOS {
     CB_RASTRAL,
     CB_RTRINITY,
     CB_RHYPER,
-    CB_CA,
-    CB_CW,
-    CB_CC,
+    CB_CTL_A,
+    CB_CTL_W,
+    CB_ALT_X,
+    CB_CTL_C,
     CB_MOUSE,
     CB_NAV,
     CB_SYM,
 };
-#define KEY_COMBOS_SIZE 32
+#define KEY_COMBOS_SIZE 33
 extern combo_t key_combos[KEY_COMBOS_SIZE];
