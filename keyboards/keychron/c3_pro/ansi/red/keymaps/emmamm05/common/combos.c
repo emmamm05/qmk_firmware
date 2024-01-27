@@ -70,16 +70,21 @@ combo_t key_combos[] = {
     [CB_SYM] = COMBO(cb_sym, OSL(LY_SYM)),
 };
 
-bool combo_should_trigger(uint16_t combo_index, combo_t *combo, uint16_t keycode, keyrecord_t *record) {
-    uint8_t wpm = get_current_wpm();
-    if (wpm > COMBOS_WPM_THRESHOLD) {
-#ifdef CONSOLE_ENABLE
-    dprintf("wpm: %u, combos disabled\n", wpm);
-#endif
-        return false;
-    }
-#ifdef CONSOLE_ENABLE
-    dprintf("wpm: %u, combos enabled\n", wpm);
-#endif
+bool get_combo_must_hold(uint16_t index, combo_t *combo) {
+    // Same as above, decide by keycode, the combo index, or by the keys in the chord.
     return true;
 }
+
+// bool combo_should_trigger(uint16_t combo_index, combo_t *combo, uint16_t keycode, keyrecord_t *record) {
+//     uint8_t wpm = get_current_wpm();
+//     if (wpm > COMBOS_WPM_THRESHOLD) {
+// #ifdef CONSOLE_ENABLE
+//     dprintf("wpm: %u, combos disabled\n", wpm);
+// #endif
+//         return false;
+//     }
+// #ifdef CONSOLE_ENABLE
+//     dprintf("wpm: %u, combos enabled\n", wpm);
+// #endif
+//     return true;
+// }
