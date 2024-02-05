@@ -20,11 +20,6 @@ static uint32_t os_switch_timer_buffer   = 0;
 static uint8_t  os_switch_indicate_count = 0;
 static uint8_t  led_toggle_count         = 5;
 
-#if defined COMBOS_WPM_THRESHOLD && defined ENABLE_WPM_LED_ANIMATION
-static uint8_t  led_animation_mode = 0;
-static uint32_t led_animation_timer_buffer = 0;
-#endif
-
 void keyboard_post_init_kb(void) {
     setPinOutputPushPull(LED_MAC_OS_PIN);
     setPinOutputPushPull(LED_WIN_OS_PIN);
@@ -62,20 +57,6 @@ void housekeeping_task_kb(void) {
         writePin(LED_MAC_OS_PIN, !LED_OS_PIN_ON_STATE);
         writePin(LED_WIN_OS_PIN, LED_OS_PIN_ON_STATE);
     }
-#if defined COMBOS_WPM_THRESHOLD && defined ENABLE_WPM_LED_ANIMATION
-    uint8_t wpm = get_current_wpm();
-    if (led_animation_timer_buffer && \
-        timer_elapsed32(led_animation_timer_buffer) > 300 && \
-        wpm < COMBOS_WPM_THRESHOLD
-    ) {
-        led_animation_timer_buffer = 0;
-        led_matrix_mode_noeeprom(led_animation_mode);
-    } else if(!led_animation_timer_buffer && wpm > COMBOS_WPM_THRESHOLD) {
-        led_animation_mode = led_matrix_get_mode();
-        led_animation_timer_buffer = timer_read32();
-        led_matrix_mode_noeeprom(LED_MATRIX_SOLID_REACTIVE_MULTINEXUS);
-    }
-#endif
 
     if (os_switch_timer_buffer && timer_elapsed32(os_switch_timer_buffer) > 300) {
         if (os_switch_indicate_count++ > led_toggle_count) {

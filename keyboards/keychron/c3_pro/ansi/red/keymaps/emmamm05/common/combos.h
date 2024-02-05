@@ -5,10 +5,10 @@
 #include "layers.h"
 
 enum COMBOS {
-    CB_CTL,
-    CB_GUI,
-    CB_ALT,
-    CB_SFT,
+    CB_LCTL,
+    CB_LGUI,
+    CB_LALT,
+    CB_LSFT,
     CB_LCS,
     CB_LCA,
     CB_LCG,
@@ -20,6 +20,10 @@ enum COMBOS {
     CB_LASTRAL,
     CB_LTRINITY,
     CB_LHYPER,
+    CB_RCTL,
+    CB_RGUI,
+    CB_RALT,
+    CB_RSFT,
     CB_RCA,
     CB_RCS,
     CB_RCG,
@@ -39,5 +43,5 @@ enum COMBOS {
     CB_NAV,
     CB_SYM,
 };
-#define KEY_COMBOS_SIZE 33
+#define KEY_COMBOS_SIZE 37
 extern combo_t key_combos[KEY_COMBOS_SIZE];
