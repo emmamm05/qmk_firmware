@@ -14,6 +14,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include <stdint.h>
 #include QMK_KEYBOARD_H
 #include "raw_hid.h"
 #include "common/keys.h"
@@ -88,8 +89,52 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______,  _______,  _______,                                _______,                                _______,  KC_TRNS,  _______,    _______,  _______,  _______,  _______),
 };
 
+void print_buf(uint8_t *data, uint8_t length) {
+#ifdef CONSOLE_ENABLE
+    for (int i = 0; i < length; i++) {
+
+        dprintf("%02X ", data[i]);
+    }
+    dprintf("\n");
+#endif
+}
+
+uint8_t macropad_bitmask(uint8_t key) {
+    return 1 << (key - KC_F17);
+}
+uint8_t is_macrokey(uint8_t state, uint8_t key) {
+    return state & macropad_bitmask(key);
+}
+void set_layer(uint8_t layer, uint8_t state) {
+    if (state) {
+        layer_on(layer);
+    } else {
+        layer_off(layer);
+    }
+}
+
+#define MACRO_PAD_SIZE 8
+#define KEYS_SEGMENT_START 3
+#define MAX_KEYS_PER_REPORT 6
+uint8_t macropad_state;
+
 // `data` is a pointer to the buffer containing the received HID report
 // `length` is the length of the report - always `RAW_EPSIZE`
 void raw_hid_receive(uint8_t *data, uint8_t length) {
+#ifdef CONSOLE_ENABLE
+    dprintf("Received data: %d\n", length);
+#endif
+    print_buf(data, length);
     raw_hid_send(data, length);
+    macropad_state = 0;
+
+    int i;
+    for (i = KEYS_SEGMENT_START; i < KEYS_SEGMENT_START + MAX_KEYS_PER_REPORT; i ++) {
+        if (data[i] >= KC_F17 && data[i] <= KC_F24) {
+            macropad_state |= macropad_bitmask(data[i]);
+        }
+    }
+
+    set_layer(LY_NUM, is_macrokey(macropad_state, KC_F18));
+    set_layer(LY_MOD, is_macrokey(macropad_state, KC_F19));
 }
