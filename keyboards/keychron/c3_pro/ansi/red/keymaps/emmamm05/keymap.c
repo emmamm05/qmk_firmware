@@ -99,8 +99,17 @@ void print_buf(uint8_t *data, uint8_t length) {
 #endif
 }
 
+///////////////////////////////////// RAW ID /////////////////////////////////////
+
+#define KEYS_SEGMENT_START 1
+#define MACRO_PAD_SIZE 8
+#define MAX_KEYS_PER_REPORT 8
+#define USAGE_MAXIMUM 0x08
+#define USAGE_MINIMUM 0x01
+
+uint8_t macropad_state;
 uint8_t macropad_bitmask(uint8_t key) {
-    return 1 << (key - KC_F17);
+    return 1 << (key - USAGE_MINIMUM);
 }
 uint8_t is_macrokey(uint8_t state, uint8_t key) {
     return state & macropad_bitmask(key);
@@ -113,28 +122,24 @@ void set_layer(uint8_t layer, uint8_t state) {
     }
 }
 
-#define MACRO_PAD_SIZE 8
-#define KEYS_SEGMENT_START 3
-#define MAX_KEYS_PER_REPORT 6
-uint8_t macropad_state;
-
 // `data` is a pointer to the buffer containing the received HID report
 // `length` is the length of the report - always `RAW_EPSIZE`
 void raw_hid_receive(uint8_t *data, uint8_t length) {
 #ifdef CONSOLE_ENABLE
     dprintf("Received data: %d\n", length);
-#endif
     print_buf(data, length);
-    raw_hid_send(data, length);
+#endif
     macropad_state = 0;
 
     int i;
     for (i = KEYS_SEGMENT_START; i < KEYS_SEGMENT_START + MAX_KEYS_PER_REPORT; i ++) {
-        if (data[i] >= KC_F17 && data[i] <= KC_F24) {
+        if (data[i] >= USAGE_MINIMUM && data[i] <= USAGE_MAXIMUM) {
             macropad_state |= macropad_bitmask(data[i]);
         }
     }
 
-    set_layer(LY_NUM, is_macrokey(macropad_state, KC_F18));
-    set_layer(LY_MOD, is_macrokey(macropad_state, KC_F19));
+    set_layer(LY_NAV, is_macrokey(macropad_state, 0x01));
+    set_layer(LY_NUM, is_macrokey(macropad_state, 0x02));
+    set_layer(LY_MOD, is_macrokey(macropad_state, 0x03));
+    set_layer(LY_SYM, is_macrokey(macropad_state, 0x04));
 }
