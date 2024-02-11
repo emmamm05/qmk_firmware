@@ -114,11 +114,19 @@ uint8_t macropad_bitmask(uint8_t key) {
 uint8_t is_macrokey(uint8_t state, uint8_t key) {
     return state & macropad_bitmask(key);
 }
-void set_layer(uint8_t layer, uint8_t state) {
+void external_set_layer(uint8_t layer, uint8_t state) {
     if (state) {
         layer_on(layer);
     } else {
         layer_off(layer);
+    }
+}
+
+void external_set_oneshot_layer(uint8_t layer, uint8_t state) {
+    if (state) {
+        set_oneshot_layer(layer, ONESHOT_START);
+    } else {
+        clear_oneshot_layer_state(ONESHOT_PRESSED);
     }
 }
 
@@ -138,8 +146,8 @@ void raw_hid_receive(uint8_t *data, uint8_t length) {
         }
     }
 
-    set_layer(LY_NAV, is_macrokey(macropad_state, 0x01));
-    set_layer(LY_NUM, is_macrokey(macropad_state, 0x02));
-    set_layer(LY_MOD, is_macrokey(macropad_state, 0x03));
-    set_layer(LY_SYM, is_macrokey(macropad_state, 0x04));
+    external_set_oneshot_layer(LY_NAV, is_macrokey(macropad_state, 0x01));
+    external_set_oneshot_layer(LY_NUM, is_macrokey(macropad_state, 0x02));
+    external_set_oneshot_layer(LY_MOD, is_macrokey(macropad_state, 0x03));
+    external_set_oneshot_layer(LY_SYM, is_macrokey(macropad_state, 0x04));
 }
