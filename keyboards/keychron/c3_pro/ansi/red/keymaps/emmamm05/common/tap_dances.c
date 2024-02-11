@@ -3,7 +3,6 @@
 
 tap_dance_action_t tap_dance_actions[] = {
     [TAB_NAV]  = ACTION_TAP_DANCE_TAP_HOLD_LAYER(KC_TAB, LY_NAV),
-    [ENT_MOD]  = ACTION_TAP_DANCE_TAP_HOLD_LAYER(KC_ENT, LY_MOD),
 };
 
 // HOLD LAYER TAP DANCE

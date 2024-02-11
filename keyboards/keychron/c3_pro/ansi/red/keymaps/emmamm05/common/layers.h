@@ -8,9 +8,8 @@ enum layers{
   LY_GAME,
   LY_GAME_FN,
   LY_NAV,
-  LY_MOUSE,
-  LY_NUM,
-  LY_MOD,
+  LY_MODL,
+  LY_MODR,
   LY_SYM,
 };
 
