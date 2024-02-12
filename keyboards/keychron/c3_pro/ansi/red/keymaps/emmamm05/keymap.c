@@ -38,33 +38,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______,  _______,  BL_DOWN,  _______,  _______,  _______,  DM_RSTP,  DM_REC1,  DM_REC2,  DM_PLY1,  DM_PLY2,  _______,              _______,
         _______,            _______,  _______,  _______,  _______,  _______,  NK_TOGG,  CM_TOGG,  KC_F18,   KC_F17,   _______,              _______,            _______,
         _______,  _______,  _______,                                _______,                                _______,  KC_TRNS,  _______,    _______,  _______,  _______,  _______),
-    [LY_NAV] = LAYOUT_tkl_ansi(
+    [LY_LEFT] = LAYOUT_tkl_ansi(
         _______,            _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______,  _______,  _______,
         _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______,  _______,  _______,
-        _______,  _______,  _______,  _______,  _______,  _______,  KC_HOME,  KC_PGDN,  KC_PGUP,  KC_END,   _______, _______,  _______,    _______,  _______,  _______,  _______,
-        _______,  _______,  _______,  _______,  _______,  _______,  KC_LEFT,  KC_DOWN,  KC_UP,    KC_RIGHT, _______,  _______,              _______,
-        _______,            _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,              _______,            _______,
+        _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______, _______,  _______,    _______,  _______,  _______,  _______,
+        _______,  OS_LSFT,  OS_LOPT,  OS_LCMD,  OS_LCTL,  _______,  KC_LEFT,  KC_DOWN,  KC_UP,    KC_RIGHT, _______,  _______,              _______,
+        _______,            _______,  _______,  _______,  _______,  KC_HOME,  KC_PGDN,  KC_PGUP,  KC_END,   _______,  _______,              _______,            _______,
         _______,  _______,  _______,                                KC_BTN1,                                _______,  _______,  _______,    _______,  _______,  _______,  _______),
-    [LY_MODL] = LAYOUT_tkl_ansi(
+    [LY_RIGHT] = LAYOUT_tkl_ansi(
         _______,            _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______,  _______,  _______,
         _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______,  _______,  _______,
-        _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______,  _______,  _______,
-        _______,  OS_LOPT,  OS_LSFT,  OS_LCMD,  OS_LCTL,  _______,  _______,  _______,  _______,  _______,  _______,  _______,              _______,
-        _______,            _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,              _______,            _______,
-        _______,  _______,  _______,                                _______,                                _______,  _______,  _______,    _______,  _______,  _______,  _______),
-    [LY_MODR] = LAYOUT_tkl_ansi(
-        _______,            _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______,  _______,  _______,
-        _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______,  _______,  _______,
-        _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______,  _______,  _______,
+        _______,  KC_LABK,  KC_LPRN,  KC_LBRC,  KC_LCBR,  KC_CIRC,  KC_DLR,   KC_RCBR,  KC_RBRC,  KC_RPRN,  KC_RABK,  _______,  _______,    _______,  _______,  _______,  _______,
         _______,  _______,  _______,  _______,  _______,  _______,  _______,  OS_RCTL,  OS_RCMD,  OS_RSFT,  OS_ROPT,  _______,              _______,
-        _______,            _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,              _______,            _______,
-        _______,  _______,  _______,                                OSL(LY_BASE),                           _______,  _______,  _______,    _______,  _______,  _______,  _______),
-
-    [LY_SYM] = LAYOUT_tkl_ansi(
-        _______,            _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______,  _______,  _______,
-        _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______,  _______,  _______,
-        KC_TILD,  KC_EXLM,  KC_AT,    KC_HASH,  KC_PERC,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______,  _______,  _______,
-        _______,  KC_LABK,  KC_LPRN,  KC_LBRC,  KC_LCBR,  KC_CIRC,  KC_DLR,   KC_RCBR,  KC_RBRC,  KC_RPRN,  KC_RABK,  _______,              _______,
         _______,            _______,  _______,  _______,  KC_AMPR,  _______,  KC_PIPE,  KC_SLSH,  KC_BSLS,  _______,  _______,              _______,            _______,
         _______,  _______,  _______,                                _______,                                _______,  _______,  _______,    _______,  _______,  _______,  _______),
     [LY_GAME] = LAYOUT_tkl_ansi(
@@ -101,27 +86,12 @@ void print_buf(uint8_t *data, uint8_t length) {
 #define USAGE_MAXIMUM 0x08
 #define USAGE_MINIMUM 0x01
 
-uint8_t macropad_state;
-uint8_t macropad_bitmask(uint8_t key) {
+uint8_t keypad_state;
+uint8_t keypad_bitmask(uint8_t key) {
     return 1 << (key - USAGE_MINIMUM);
 }
 uint8_t is_macrokey(uint8_t state, uint8_t key) {
-    return state & macropad_bitmask(key);
-}
-void external_set_layer(uint8_t layer, uint8_t state) {
-    if (state) {
-        layer_on(layer);
-    } else {
-        layer_off(layer);
-    }
-}
-
-void external_set_oneshot_layer(uint8_t layer, uint8_t state) {
-    if (state) {
-        set_oneshot_layer(layer, ONESHOT_START);
-    } else {
-        clear_oneshot_layer_state(ONESHOT_PRESSED);
-    }
+    return state & keypad_bitmask(key);
 }
 
 // `data` is a pointer to the buffer containing the received HID report
@@ -131,17 +101,15 @@ void raw_hid_receive(uint8_t *data, uint8_t length) {
     dprintf("Received data: %d\n", length);
     print_buf(data, length);
 #endif
-    macropad_state = 0;
+    keypad_state = 0;
 
     int i;
     for (i = KEYS_SEGMENT_START; i < KEYS_SEGMENT_START + MAX_KEYS_PER_REPORT; i ++) {
         if (data[i] >= USAGE_MINIMUM && data[i] <= USAGE_MAXIMUM) {
-            macropad_state |= macropad_bitmask(data[i]);
+            keypad_state |= keypad_bitmask(data[i]);
         }
     }
 
-    external_set_oneshot_layer(LY_NAV, is_macrokey(macropad_state, 0x01));
-    external_set_layer(LY_MODR, is_macrokey(macropad_state, 0x02));
-    external_set_layer(LY_MODL, is_macrokey(macropad_state, 0x03));
-    external_set_oneshot_layer(LY_SYM, is_macrokey(macropad_state, 0x04));
+    is_macrokey(keypad_state, 0x02) ? layer_on(LY_LEFT) : layer_off(LY_LEFT);
+    is_macrokey(keypad_state, 0x03) ? layer_on(LY_RIGHT) : layer_off(LY_RIGHT);
 }

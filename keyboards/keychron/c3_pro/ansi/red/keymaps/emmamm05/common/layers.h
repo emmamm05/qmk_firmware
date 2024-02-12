@@ -7,10 +7,8 @@ enum layers{
   LY_FN,
   LY_GAME,
   LY_GAME_FN,
-  LY_NAV,
-  LY_MODL,
-  LY_MODR,
-  LY_SYM,
+  LY_LEFT,
+  LY_RIGHT
 };
 
 layer_state_t default_layer_state_set_user(layer_state_t state);
