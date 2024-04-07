@@ -41,7 +41,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [LY_LEFT] = LAYOUT_tkl_ansi(
         _______,            _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______,  _______,  _______,
         _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______,  _______,  _______,
-        _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______, _______,  _______,    _______,  _______,  _______,  _______,
+        _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______,  _______,  _______,
         _______,  OS_LSFT,  OS_LOPT,  OS_LCMD,  OS_LCTL,  _______,  KC_LEFT,  KC_DOWN,  KC_UP,    KC_RIGHT, _______,  _______,              _______,
         _______,            _______,  _______,  _______,  _______,  KC_HOME,  KC_PGDN,  KC_PGUP,  KC_END,   _______,  _______,              _______,            _______,
         _______,  _______,  _______,                                KC_BTN1,                                _______,  _______,  _______,    _______,  _______,  _______,  _______),
@@ -94,6 +94,20 @@ uint8_t is_macrokey(uint8_t state, uint8_t key) {
     return state & keypad_bitmask(key);
 }
 
+void leader_key(uint8_t key) {
+    if (!leader_sequence_active()) {
+#ifdef CONSOLE_ENABLE
+        dprintf("Leader key: %d\n", key);
+#endif
+        leader_start();
+        leader_sequence_add(key);
+    } else {
+#ifdef CONSOLE_ENABLE
+        dprintf("Leader key ignored: %d\n", key);
+#endif
+    }
+}
+
 // `data` is a pointer to the buffer containing the received HID report
 // `length` is the length of the report - always `RAW_EPSIZE`
 void raw_hid_receive(uint8_t *data, uint8_t length) {
@@ -110,6 +124,26 @@ void raw_hid_receive(uint8_t *data, uint8_t length) {
         }
     }
 
+    if (is_macrokey(keypad_state, 0x01)) {
+        leader_key(KC_1);
+    }
     is_macrokey(keypad_state, 0x02) ? layer_on(LY_LEFT) : layer_off(LY_LEFT);
     is_macrokey(keypad_state, 0x03) ? layer_on(LY_RIGHT) : layer_off(LY_RIGHT);
+}
+
+///////////////////////////////////// LEADER KEY/////////////////////////////////////
+void leader_start_user(void) {
+    // Do something when the leader key is pressed
+#ifdef CONSOLE_ENABLE
+    dprintf("Leader key start\n");
+#endif
+}
+
+void leader_end_user(void) {
+#ifdef CONSOLE_ENABLE
+    dprintf("Leader key end\n");
+#endif
+    if (leader_sequence_two_keys(KC_1, KC_S)) {
+
+    }
 }
