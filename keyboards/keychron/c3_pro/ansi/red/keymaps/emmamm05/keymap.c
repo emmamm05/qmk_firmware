@@ -94,20 +94,6 @@ uint8_t is_macrokey(uint8_t state, uint8_t key) {
     return state & keypad_bitmask(key);
 }
 
-void leader_key(uint8_t key) {
-    if (!leader_sequence_active()) {
-#ifdef CONSOLE_ENABLE
-        dprintf("Leader key: %d\n", key);
-#endif
-        leader_start();
-        leader_sequence_add(key);
-    } else {
-#ifdef CONSOLE_ENABLE
-        dprintf("Leader key ignored: %d\n", key);
-#endif
-    }
-}
-
 // `data` is a pointer to the buffer containing the received HID report
 // `length` is the length of the report - always `RAW_EPSIZE`
 void raw_hid_receive(uint8_t *data, uint8_t length) {
@@ -125,16 +111,20 @@ void raw_hid_receive(uint8_t *data, uint8_t length) {
     }
 
     if (is_macrokey(keypad_state, 0x01)) {
-        leader_key(KC_1);
+        leader_start();
     }
     is_macrokey(keypad_state, 0x02) ? layer_on(LY_LEFT) : layer_off(LY_LEFT);
     is_macrokey(keypad_state, 0x03) ? layer_on(LY_RIGHT) : layer_off(LY_RIGHT);
+    if (is_macrokey(keypad_state, 0x04)) {
+        set_oneshot_mods(MOD_BIT(KC_LCTL) | MOD_BIT(KC_LCMD));
+    }
 }
 
 ///////////////////////////////////// LEADER KEY/////////////////////////////////////
 void leader_start_user(void) {
     // Do something when the leader key is pressed
-#ifdef CONSOLE_ENABLE
+#ifdef CONSOLE_ENABL
+E
     dprintf("Leader key start\n");
 #endif
 }
@@ -143,7 +133,6 @@ void leader_end_user(void) {
 #ifdef CONSOLE_ENABLE
     dprintf("Leader key end\n");
 #endif
-    if (leader_sequence_two_keys(KC_1, KC_S)) {
-
+    if (leader_sequence_one_key(KC_J)) {
     }
 }
