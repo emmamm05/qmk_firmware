@@ -113,8 +113,8 @@ void raw_hid_receive(uint8_t *data, uint8_t length) {
     if (is_macrokey(keypad_state, 0x01)) {
         leader_start();
     }
-    is_macrokey(keypad_state, 0x02) ? layer_on(LY_LEFT) : layer_off(LY_LEFT);
-    is_macrokey(keypad_state, 0x03) ? layer_on(LY_RIGHT) : layer_off(LY_RIGHT);
+    is_macrokey(keypad_state, 0x02) ? layer_on(LY_RIGHT) : layer_off(LY_RIGHT);
+    is_macrokey(keypad_state, 0x03) ? layer_on(LY_LEFT) : layer_off(LY_LEFT);
     if (is_macrokey(keypad_state, 0x04)) {
         set_oneshot_mods(MOD_BIT(KC_LCTL) | MOD_BIT(KC_LCMD));
     }
