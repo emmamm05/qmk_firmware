@@ -123,8 +123,7 @@ void raw_hid_receive(uint8_t *data, uint8_t length) {
 ///////////////////////////////////// LEADER KEY/////////////////////////////////////
 void leader_start_user(void) {
     // Do something when the leader key is pressed
-#ifdef CONSOLE_ENABL
-E
+#ifdef CONSOLE_ENABLE
     dprintf("Leader key start\n");
 #endif
 }
