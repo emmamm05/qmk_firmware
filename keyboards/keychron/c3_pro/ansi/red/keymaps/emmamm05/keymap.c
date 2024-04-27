@@ -29,7 +29,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_GRV,      KC_1,  KC_2,     KC_3,     KC_4,     KC_5,     KC_6,     KC_7,     KC_8,     KC_9,     KC_0,     KC_MINS,  KC_EQL,     KC_BSPC,  KC_INS,   KC_HOME,  KC_PGUP,
         KC_TAB,      KC_Q,  KC_W,     KC_E,     KC_R,     KC_T,     KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,     KC_LBRC,  KC_RBRC,    KC_BSLS,  KC_DEL,   KC_END,   KC_PGDN,
         OSL(LY_LEFT),KC_A,  KC_S,     KC_D,     KC_F,     KC_G,     KC_H,     KC_J,     KC_K,     KC_L,     KC_SCLN,  KC_QUOT,              KC_ENT,
-        OS_LSFT,            KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,     KC_N,     KC_M,     KC_COMM,  KC_DOT,   KC_SLSH,              OS_RSFT,            KC_UP,
+        OS_LSFT,            KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,     KC_N,     KC_M,     KC_COMM,  KC_DOT,   KC_SLSH,              OSL(LY_SYM),        KC_UP,
         OS_LCTL,  OS_LOPT,  OS_LCMD,                                KC_SPC,                                 OS_RCMD,  MO(LY_FN),OS_ROPT,    OS_RCTL,  KC_LEFT,  KC_DOWN,  KC_RGHT),
     [LY_FN] = LAYOUT_tkl_ansi(
         KC_ESC,             KC_BRID,  KC_BRIU,  KC_MCTL,  KC_LPAD,  BL_DOWN,  BL_UP,    KC_MPRV,  KC_MPLY,  KC_MNXT,  KC_MUTE,  KC_VOLD,    KC_VOLU,  KC_NO,    QK_LOCK,  QK_REP,
@@ -38,6 +38,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         MOD_CAPS, _______,  BL_DOWN,  _______,  _______,  _______,  DM_RSTP,  DM_REC1,  DM_REC2,  DM_PLY1,  DM_PLY2,  _______,              _______,
         _______,            _______,  _______,  _______,  _______,  _______,  NK_TOGG,  CM_TOGG,  KC_F18,   KC_F17,   _______,              _______,            _______,
         _______,  _______,  _______,                                _______,                                _______,  KC_TRNS,  _______,    _______,  _______,  _______,  _______),
+    [LY_SYM] = LAYOUT_tkl_ansi(
+        _______,            _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______,  _______,  _______,
+        _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______,  _______,  _______,
+        KC_TILD,  KC_EXLM,  KC_AT,    KC_HASH,  KC_DLR,   KC_PERC,  KC_CIRC,  KC_AMPR,  KC_ASTR,  KC_LPRN,  KC_RPRN,  KC_UNDS,  KC_PLUS,    _______,  _______,  _______,  _______,
+        _______,  _______,  KC_LPRN,  KC_LBRC,  KC_LCBR,  _______,  _______,  _______,  _______,  _______,  _______,  _______,              _______,
+        OSL(LY_SYM2),       _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,              _______,            _______,
+        _______,  _______,  _______,                                _______,                                _______,  _______,  _______,    _______,  _______,  _______,  _______),
+    [LY_SYM2] = LAYOUT_tkl_ansi(
+        _______,            _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______,  _______,  _______,
+        _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______,  _______,  _______,
+        _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______,  _______,  _______,
+        _______,  _______,  KC_RPRN,  KC_RBRC,  KC_RCBR,  _______,  _______,  _______,  _______,  _______,  _______,  _______,              _______,
+        _______,            _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,              _______,            _______,
+        _______,  _______,  _______,                                _______,                                _______,  _______,  _______,    _______,  _______,  _______,  _______),
     [LY_LEFT] = LAYOUT_tkl_ansi(
         _______,            _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______,  _______,  _______,
         _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______,  _______,  _______,
@@ -78,6 +92,12 @@ void print_buf(uint8_t *data, uint8_t length) {
 #endif
 }
 
+void oneshot_layer_changed_user(uint8_t layer) {
+#ifdef CONSOLE_ENABLE
+    dprintf("%02X", layer);
+#endif
+}
+
 ///////////////////////////////////// RAW ID /////////////////////////////////////
 
 #define KEYS_SEGMENT_START 1
@@ -113,8 +133,16 @@ void raw_hid_receive(uint8_t *data, uint8_t length) {
     if (is_macrokey(keypad_state, 0x01)) {
         leader_start();
     }
-    is_macrokey(keypad_state, 0x02) ? layer_on(LY_RIGHT) : layer_off(LY_RIGHT);
-    is_macrokey(keypad_state, 0x03) ? layer_on(LY_LEFT) : layer_off(LY_LEFT);
+    if (is_macrokey(keypad_state, 0x02) && IS_LAYER_OFF(LY_RIGHT)) {
+        set_oneshot_layer(LY_RIGHT, ONESHOT_START);
+    }else if (!is_macrokey(keypad_state, 0x02) && IS_LAYER_ON(LY_RIGHT)) {
+        clear_oneshot_layer_state(ONESHOT_PRESSED);
+    }
+    if (is_macrokey(keypad_state, 0x03) && IS_LAYER_OFF(LY_LEFT)) {
+        set_oneshot_layer(LY_LEFT, ONESHOT_START);
+    }else if (!is_macrokey(keypad_state, 0x02) && IS_LAYER_ON(LY_LEFT)) {
+        clear_oneshot_layer_state(ONESHOT_PRESSED);
+    }
     if (is_macrokey(keypad_state, 0x04)) {
         set_oneshot_mods(MOD_BIT(KC_LCTL) | MOD_BIT(KC_LCMD));
     }

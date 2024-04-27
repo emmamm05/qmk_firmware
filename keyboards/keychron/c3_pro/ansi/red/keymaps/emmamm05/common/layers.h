@@ -8,7 +8,9 @@ enum layers{
   LY_GAME,
   LY_GAME_FN,
   LY_LEFT,
-  LY_RIGHT
+  LY_RIGHT,
+  LY_SYM,
+  LY_SYM2,
 };
 
 layer_state_t default_layer_state_set_user(layer_state_t state);
