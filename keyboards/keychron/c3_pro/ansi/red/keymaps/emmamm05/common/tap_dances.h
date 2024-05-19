@@ -21,8 +21,7 @@ typedef enum {
 
 // tap dance keys
 enum {
-    TAB_NAV,
-    ENT_MOD,
+    TD_ESNV
 };
 
 // HOLD LAYER TAP DANCE

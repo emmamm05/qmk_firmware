@@ -2,7 +2,7 @@
 #include <print.h>
 
 tap_dance_action_t tap_dance_actions[] = {
-    [TAB_NAV]  = ACTION_TAP_DANCE_TAP_HOLD_LAYER(KC_TAB, LY_LEFT),
+    [TD_ESNV]  = ACTION_TAP_DANCE_TAP_HOLD_LAYER(KC_ESC, LY_LEFT),
 };
 
 // HOLD LAYER TAP DANCE
